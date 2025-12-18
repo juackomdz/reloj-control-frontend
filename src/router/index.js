@@ -22,6 +22,11 @@ const router = createRouter({
             path: "/dashboard",
             name: "accessuser",
             component: () => import("../views/AccessView.vue")
+        },
+        {
+            path: "/test",
+            name: "test",
+            component: () => import('../components/NavBarComponent.vue')
         }
     ],
 })

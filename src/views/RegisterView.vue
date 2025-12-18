@@ -41,8 +41,7 @@ const register = async () => {
 <template>
     <v-container class="fill-height">
         <v-row align="center" justify="center">
-            <v-sheet class="bg-grey-darken-4" width="500">
-            <h1>Registro</h1>
+            <v-card title="Registro" color="transparent" width="500" elevation="10">
             <v-form @submit.prevent="register">
             
                 <v-text-field label="Rut" id="rut" name="rut" v-model="form.rut"></v-text-field>
@@ -62,7 +61,7 @@ const register = async () => {
                 color="info"
             ></v-divider>
             <v-btn class="mt-2" block to="/">Iniciar Sesión</v-btn>
-            </v-sheet>
+            </v-card>
         </v-row>
         <v-snackbar v-model="snackbar" class="text-center" :timeout="3000">
             {{ mensaje }}
