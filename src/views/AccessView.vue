@@ -38,8 +38,8 @@ if(!localStorage.getItem("user")){
     <v-container class="d-flex align-center justify-center" style="min-height: 60vh;">
         <v-row align="center" justify="center">
             <v-col cols="auto">
-                <v-btn color="green" size="x-large" class="me-4" variant="tonal" @click="registro(url+'check-in',id)">Ingreso</v-btn>
-                <v-btn color="red" size="x-large" variant="tonal" @click="registro(url+'check-out',id)">Salida</v-btn>
+                <v-btn color="green" size="x-large" class="me-4" @click="registro(url+'check-in',id)">Ingreso</v-btn>
+                <v-btn color="red" size="x-large" @click="registro(url+'check-out',id)">Salida</v-btn>
             </v-col>
         </v-row>
     </v-container>
