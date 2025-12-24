@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue"
-import {useRouter} from "vue-router"
+import { useRouter } from "vue-router"
 import { useSesionStore } from "../stores/login"
 
 const email = ref("")
@@ -25,9 +25,9 @@ const access = async () => {
         const data = await res.json()
 
         if(res.ok){
-            useSesion.set(data.user_id)
+            //const decoded = jwtDecode(data.token)
+            useSesion.set(data.token)
             router.push("/dashboard")
-            console.log(typeof useSesion.user)
         }
         
     } catch (error) {

@@ -1,12 +1,19 @@
 <script setup>
     import { ref } from "vue"
     import NavBarComponent from "../components/NavBarComponent.vue"
+    import LogoutComponent from "../components/LogoutComponent.vue"
+    import { jwtDecode } from "jwt-decode"
 
     const ex = ref([])
-    const user = parseInt(localStorage.getItem("user"))
+    const user = localStorage.getItem("user")
+    const decoded = jwtDecode(user)
     const datos = async () => {
         try {
-            const res = await fetch(`http://localhost:3001/api/v1/data/`+user)
+            const res = await fetch(`http://localhost:3001/api/v1/auth/data/`+decoded.user,{
+                headers: {
+                    "Authorization": "Bearer "+user
+                }
+            })
             const data = await res.json()
 
             ex.value = data
@@ -22,7 +29,12 @@
 
 <v-container>
     <NavBarComponent></NavBarComponent>
-    <h1 class="text-h2">Registros</h1>
+    <v-container>
+        <v-row>
+            <h1 class="text-h2">Registros</h1>
+            <LogoutComponent></LogoutComponent>
+        </v-row>
+    </v-container>
     <v-container>
         <v-row>
             <v-col>

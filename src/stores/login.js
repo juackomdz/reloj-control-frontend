@@ -3,10 +3,10 @@ import { ref } from "vue"
 
 export const useSesionStore = defineStore("sesion", () => {
 
-    const user = ref("")
+    const user = ref(null)
 
-    const set = (id) => {
-        user.value = id
+    const set = (token) => {
+        user.value = token
         localStorage.setItem("user", user.value)
     }
 

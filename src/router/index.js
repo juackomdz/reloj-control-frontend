@@ -24,6 +24,11 @@ const router = createRouter({
             component: () => import("../views/AccessView.vue")
         },
         {
+            path: "/dashboard/graph",
+            name: "graph",
+            component: () => import("../views/DashboardView.vue")
+        },
+        {
             path: "/test",
             name: "test",
             component: () => import('../components/NavBarComponent.vue')

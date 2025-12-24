@@ -4,6 +4,7 @@ export const check = () => {
 
     const mensaje = ref("")
     const snackbar = ref(false)
+    const token = localStorage.getItem("user")
 
     const registro = async (url, id) => {
         try {
@@ -11,7 +12,8 @@ export const check = () => {
             const res = await fetch(url, {
                 method: "POST",
                 headers: {
-                    "Content-type": "application/json"
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer " + token
                 },
                 body: JSON.stringify({
                     "usuario_id": id

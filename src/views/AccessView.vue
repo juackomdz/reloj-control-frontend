@@ -1,22 +1,18 @@
 <script setup>
 import NavBarComponent from "../components/NavBarComponent.vue"
-import {useSesionStore} from "../stores/login"
-import {useRouter} from "vue-router"
+import LogoutComponent from "../components/LogoutComponent.vue"
+import { useRouter } from "vue-router"
+import { jwtDecode } from "jwt-decode"
 
 import { check } from "../composables/registroData"
 
 const router = useRouter()
-const useSesion = useSesionStore()
 const {registro,mensaje,snackbar} = check()
 
-const id = parseInt(localStorage.getItem("user"))
-const url = "http://localhost:3001/api/v1/"
+const user = localStorage.getItem("user")
+const id = jwtDecode(user).user
+const url = "http://localhost:3001/api/v1/auth/"
 
-
-const out = () =>{
-    useSesion.logout()
-    router.push("/")
-}
 
 if(!localStorage.getItem("user")){
     router.push("/")
@@ -30,9 +26,7 @@ if(!localStorage.getItem("user")){
     <v-container>
         <v-row>
             <h1 class="text-h2">Dashboard</h1>
-            <v-col align="end">
-                <v-btn class="ml-auto" variant="tonal" @click="out">LOGOUT</v-btn>
-            </v-col>
+            <LogoutComponent></LogoutComponent>
         </v-row>
     </v-container>
     <v-container class="d-flex align-center justify-center" style="min-height: 60vh;">
