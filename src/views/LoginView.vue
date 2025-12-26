@@ -25,7 +25,6 @@ const access = async () => {
         const data = await res.json()
 
         if(res.ok){
-            //const decoded = jwtDecode(data.token)
             useSesion.set(data.token)
             router.push("/dashboard")
         }
@@ -42,9 +41,22 @@ const access = async () => {
     <v-container class="fill-height">
         <v-row align="center" justify="center">
             <v-card title="Login" color="transparent" width="500" elevation="10">
-                <v-form @submit.prevent="access">
-                    <v-text-field label="Email" id="email" name="email" type="text" v-model="email"></v-text-field>
-                    <v-text-field label="Password" id="password" name="password" type="password" v-model="password"></v-text-field>
+                <v-form fast-fail @submit.prevent="access">
+                    <v-text-field
+                    :rules="[v => /^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(v) || 'Ingrese un correo valido']"
+                    label="Email" 
+                    id="email" 
+                    name="email"
+                    type="text" 
+                    v-model="email"></v-text-field>
+
+                    <v-text-field 
+                    :rules="[v => v.length>4 || 'Debe contener al menos 5 caracteres']"     
+                    label="Password" 
+                    id="password" 
+                    name="password" 
+                    type="password" 
+                    v-model="password"></v-text-field>
                     <v-btn type="submit" block variant="tonal">Ingresar</v-btn>
                 </v-form>
                  <v-divider
