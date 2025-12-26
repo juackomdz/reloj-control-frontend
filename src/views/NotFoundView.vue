@@ -8,7 +8,8 @@
     >
         <v-card
         text="VOLVER"
-        to="/"
+        link
+        @click="this.$router.back()"
         ></v-card>
     </v-empty-state>
 </template>
