@@ -21,19 +21,34 @@ const router = createRouter({
         {
             path: "/dashboard",
             name: "accessuser",
-            component: () => import("../views/AccessView.vue")
+            component: () => import("../views/AccessView.vue"),
+            meta: {
+                requiresAuth: true,
+            }
         },
         {
             path: "/dashboard/graph",
             name: "graph",
-            component: () => import("../views/DashboardView.vue")
-        },
-        {
-            path: "/test",
-            name: "test",
-            component: () => import('../components/NavBarComponent.vue')
+            component: () => import("../views/DashboardView.vue"),
+            meta: {
+                requiresAuth: true
+            }
         }
     ],
+})
+
+router.beforeEach((to, from, next) => {
+
+    const user = localStorage.getItem("user")
+    if (to.meta.requiresAuth) {
+        if (user) {
+            next()
+        } else {
+            next("/")
+        }
+    } else {
+        next()
+    }
 })
 
 export default router
