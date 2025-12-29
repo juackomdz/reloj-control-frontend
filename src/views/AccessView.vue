@@ -1,22 +1,21 @@
 <script setup>
 import NavBarComponent from "../components/NavBarComponent.vue"
 import LogoutComponent from "../components/LogoutComponent.vue"
-import { useRouter } from "vue-router"
 import { jwtDecode } from "jwt-decode"
 
 import { check } from "../composables/registroData"
 
-const router = useRouter()
 const {registro,mensaje,snackbar} = check()
 
 const user = localStorage.getItem("user")
-const id = jwtDecode(user).user
+
+
+const data = jwtDecode(user)
+const id = data.user
+
 const url = "http://localhost:3001/api/v1/auth/"
 
 
-if(!localStorage.getItem("user")){
-    router.push("/")
-}
 </script>
 
 <template>
