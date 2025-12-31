@@ -27,7 +27,7 @@ const register = async () => {
             body: JSON.stringify({
                 rut: form.rut,
                 email: form.email,
-                nombre: form.email,
+                nombre: form.nombre,
                 password: form.password
             })
         })
