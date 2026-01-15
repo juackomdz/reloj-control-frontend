@@ -25,8 +25,13 @@ const access = async () => {
         const data = await res.json()
 
         if(res.ok){
-            useSesion.set(data.token)
-            router.push("/dashboard")
+            try {
+                await useSesion.set(data.auth_token, data.refresh_token)
+                router.push("/dashboard")
+            } catch (error) {
+                console.log(error)
+            }
+            
         }
         
     } catch (error) {
