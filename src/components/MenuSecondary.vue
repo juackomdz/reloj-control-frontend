@@ -3,7 +3,9 @@
         <SidebarMenu>
             <SidebarMenuItem>
                 <SidebarMenuButton>
-                    {{ prop.item }}
+                    <a href="/panel/registros">
+                        {{ prop.item }}
+                    </a>
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>

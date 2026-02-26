@@ -3,15 +3,31 @@ import { createRouter, createWebHistory } from "vue-router"
 const routes = [
     {
         path: "/",
-        component: () => import("@/components/MenuMain.vue")
+        component: () => import("@/views/Login.vue")
     },
     {
         path: "/admin",
         component: () => import("@/components/MenuMain.vue")
     },
     {
-        path: "/login",
-        component: () => import("@/views/Login.vue")
+        path: "/panel/index",
+        component: () => import("@/views/IndexUser.vue")
+    },
+    {
+        path: "/panel/asistencia",
+        component: () => import("@/views/AssistUser.vue")
+    },
+    {
+        path: "/panel/registros",
+        component: () => import("@/views/RegistersUser.vue")
+    },
+    {
+        path: "/test-admin",
+        component: () => import("@/views/testa.vue")
+    },
+    {
+        path: "/test-user",
+        component: () => import("@/views/testu.vue")
     }
 ]
 
