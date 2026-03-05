@@ -70,7 +70,8 @@ const password = ref<string>()
 
 const acceso = async () =>{
 
-  const res = await fetch('http://localhost:3001/api/v1/login',{
+  try {
+    const res = await fetch('http://localhost:3001/api/v1/login',{
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -90,6 +91,9 @@ const acceso = async () =>{
     router.push('test-admin')
   }else{
     router.push('/panel/index')
+  } 
+  } catch (error) {
+    console.log(error)
   }
 }
 
