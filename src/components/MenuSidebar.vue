@@ -8,8 +8,8 @@
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            <MenuMain :item="items[0]?.titulo"></MenuMain>
-                            <MenuSecondary :item="items[1]?.titulo"></MenuSecondary>
+                            <MenuMain :item="items[0]?.titulo" :url="items[0]?.url"></MenuMain>
+                            <MenuSecondary :item="items[1]?.titulo" :url="items[1]?.url"></MenuSecondary>
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
@@ -60,11 +60,11 @@ email.value = decodedToken.email
 const items = [
     {
         titulo: "Asistencia",
-        url: '#'
+        url: '/panel/asistencia'
     },
     {
         titulo: "Registros",
-        url: '#'
+        url: '/panel/registros'
     }
 ]
 </script>

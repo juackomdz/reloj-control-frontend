@@ -3,7 +3,7 @@
         <SidebarMenu>
             <SidebarMenuItem>
                 <SidebarMenuButton class="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear">
-                    <a href="/panel/asistencia">
+                    <a :href=prop.url>
                         {{ prop.item }}
                     </a>
                 </SidebarMenuButton>
@@ -17,6 +17,7 @@
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem} from "@/components/ui/sidebar"
 
 const prop = defineProps({
-    item: String
+    item: String,
+    url: String
 })
 </script>
